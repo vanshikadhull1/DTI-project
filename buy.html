@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusSwap - Buy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #9DB2BF;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            background-color: #27374D;
+            color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .logo i {
+            margin-right: 8px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 520;
+            font-size: 0.9rem;
+        }
+        
+        .signup-btn {
+            background-color: white;
+            color: #526D82;
+            padding: 0.5rem 1.2rem;
+            border-radius: 9999px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .signup-btn:hover {
+            background-color: white;
+        }
+        
+        .page-header {
+            background: linear-gradient(rgba(59, 82, 128, 0.85), rgba(59, 82, 128, 0.85)), url('/api/placeholder/1600/400') center/cover no-repeat;
+            color: white;
+            text-align: center;
+            padding: 3rem 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .page-title {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .page-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .filters {
+            background-color: #DDE6ED;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .filter-title {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #27374D;
+        }
+        
+        .filter-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .filter-option {
+            background-color: #9DB2BF;
+            border: none;
+            border-radius: 20px;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .filter-option:hover, .filter-option.active {
+            background-color: #27374D;
+            color: white;
+        }
+        
+        .search-bar {
+            display: flex;
+            margin-bottom: 1.5rem;
+        }
+        
+        .search-input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: 1px solid #9DB2BF;
+            border-radius: 5px 0 0 5px;
+            font-size: 1rem;
+        }
+        
+        .search-btn {
+            background-color: #9DB2BF;
+            color: white;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            padding: 0 1.5rem;
+            cursor: pointer;
+        }
+        
+        .listings {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+        
+        .listing-card {
+            background-color: #DDE6ED;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .listing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        
+        .listing-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .listing-details {
+            padding: 1.2rem;
+        }
+        
+        .listing-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #27374D;
+        }
+        
+        .listing-price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #526D82;
+            margin-bottom: 0.5rem;
+        }
+        
+        .listing-location {
+            color: #27374D;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .listing-location i {
+            margin-right: 5px;
+            color: #999;
+        }
+        
+        .listing-desc {
+            color: #27374D;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+        
+        .listing-seller {
+            display: flex;
+            align-items: center;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+        
+        .seller-pic {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        .seller-info {
+            flex: 1;
+        }
+        
+        .seller-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #333;
+        }
+        
+        .seller-rating {
+            color: #FFB400;
+            font-size: 0.8rem;
+        }
+        
+        .contact-btn {
+            background-color: #27374D;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 0.7rem 1.2rem;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: background-color 0.3s;
+            width: 100%;
+            font-weight: 600;
+        }
+        
+        .contact-btn:hover {
+            background-color: #182331;
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+            gap: 0.5rem;
+        }
+        
+        .page-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: white;
+            color: #333;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .page-link:hover, .page-link.active {
+            background-color: #27374D;
+            color: white;
+        }
+        
+        footer {
+            background-color: #27374D;
+            color: white;
+            text-align: center;
+            padding: 0.5rem 1rem;
+            margin-top: 1rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.4rem;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-link {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-link:hover {
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .listings {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .listings {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <i class="fas fa-shopping-cart"></i>
+            CampusSwap
+        </a>
+        <div class="nav-links">
+            <a href="login.html" class="nav-link">LOGIN</a>
+            <a href="register.html" class="signup-btn">SIGN UP</a>
+        </div>
+    </nav>
+    
+    <!-- Page Header -->
+    <header class="page-header">
+        <h1 class="page-title">Buy Items</h1>
+        <p class="page-subtitle">Find affordable items from fellow students</p>
+    </header>
+    
+    <div class="container">
+        <!-- Search & Filters -->
+        <section class="filters">
+            <h2 class="filter-title">Filters</h2>
+            <div class="filter-options">
+                <button class="filter-option active">All</button>
+                <button class="filter-option">Textbooks</button>
+                <button class="filter-option">Electronics</button>
+                <button class="filter-option">Furniture</button>
+                <button class="filter-option">Clothing</button>
+                <button class="filter-option">Sports</button>
+            </div>
+            
+            <div class="search-bar">
+                <input type="text" class="search-input" placeholder="Search for items...">
+                <button class="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </section>
+        
+        <!-- Listings -->
+        <section class="listings">
+            <!-- Listing 1 -->
+            <div class="listing-card">
+                <img src="/images/calculus.jpeg" alt="Calculus Textbook" class="listing-img">
+                <div class="listing-details">
+                    <h3 class="listing-title">Calculus: Early Transcendentals</h3>
+                    <p class="listing-price">$45</p>
+                    <p class="listing-desc">8th edition, great condition with minimal highlighting. Perfect for MATH 101 course.</p>
+                    <div class="listing-seller">
+                        <img src="/api/placeholder/100/100" alt="Seller Profile" class="seller-pic">
+                        <div class="seller-info">
+                            <p class="seller-name">Rishabh</p>
+                            <p class="seller-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                (4.5)
+                            </p>
+                        </div>
+                    </div>
+                    <button class="contact-btn">Contact Seller</button>
+                </div>
+            </div>
+            
+            <!-- Listing 2 -->
+            <div class="listing-card">
+                <img src="/images/lamp.jpeg" alt="Desk Lamp" class="listing-img">
+                <div class="listing-details">
+                    <h3 class="listing-title">LED Desk Lamp with USB Port</h3>
+                    <p class="listing-price">$20</p>
+                    
+                    <p class="listing-desc">Adjustable brightness, USB charging port, barely used. Perfect for late night studying.</p>
+                    <div class="listing-seller">
+                        <img src="/api/placeholder/100/100" alt="Seller Profile" class="seller-pic">
+                        <div class="seller-info">
+                            <p class="seller-name">Sanvi</p>
+                            <p class="seller-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                (5.0)
+                            </p>
+                        </div>
+                    </div>
+                    <button class="contact-btn">Contact Seller</button>
+                </div>
+            </div>
+            
+            <!-- Listing 3 -->
+            <div class="listing-card">
+                <img src="/images/calculator.jpeg" alt="Graphing Calculator" class="listing-img">
+                <div class="listing-details">
+                    <h3 class="listing-title">TI-84 Plus Graphing Calculator</h3>
+                    <p class="listing-price">$65</p>
+                    
+                    <p class="listing-desc">Like new condition, includes charging cable and case. Approved for all math and engineering exams.</p>
+                    <div class="listing-seller">
+                        <img src="/api/placeholder/100/100" alt="Seller Profile" class="seller-pic">
+                        <div class="seller-info">
+                            <p class="seller-name">Aditya</p>
+                            <p class="seller-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                (4.0)
+                            </p>
+                        </div>
+                    </div>
+                    <button class="contact-btn">Contact Seller</button>
+                </div>
+            </div>
+            
+            <!-- Listing 4 -->
+            <div class="listing-card">
+                <img src="/images/speaker.jpeg" alt="Bluetooth Speaker" class="listing-img">
+                <div class="listing-details">
+                    <h3 class="listing-title">JBL Flip 5 Bluetooth Speaker</h3>
+                    <p class="listing-price">$70</p>
+                    
+                    <p class="listing-desc">Waterproof, great sound quality, 12 hours battery life. Only 4 months old.</p>
+                    <div class="listing-seller">
+                        <img src="/api/placeholder/100/100" alt="Seller Profile" class="seller-pic">
+                        <div class="seller-info">
+                            <p class="seller-name">Rahul</p>
+                            <p class="seller-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <i class="far fa-star"></i>
+                                (3.5)
+                            </p>
+                        </div>
+                    </div>
+                    <button class="contact-btn">Contact Seller</button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Pagination -->
+        <div class="pagination">
+            <a href="#" class="page-link active">1</a>
+            <a href="#" class="page-link">2</a>
+            <a href="#" class="page-link">3</a>
+            <a href="#" class="page-link">
+                <i class="fas fa-chevron-right"></i>
+            </a>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="#" class="footer-link">About Us</a>
+            <a href="#" class="footer-link">Terms of Service</a>
+            <a href="#" class="footer-link">Privacy Policy</a>
+            <a href="#" class="footer-link">Contact</a>
+        </div>
+        <p>&copy; 2025 CampusSwap. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Filter functionality
+        document.querySelectorAll('.filter-option').forEach(option => {
+            option.addEventListener('click', function() {
+                // Remove active class from all options
+                document.querySelectorAll('.filter-option').forEach(opt => {
+                    opt.classList.remove('active');
+                });
+                
+                // Add active class to clicked option
+                this.classList.add('active');
+                
+                // Here you would typically filter the actual listings
+                // For this demo, we're just showing the UI interaction
+            });
+        });
+    </script>
+</body>
+</html>

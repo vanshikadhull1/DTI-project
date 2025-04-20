@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusSwap - Rent</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cambria', sans-serif;
+        }
+        
+        body {
+            background-color: #9DB2BF;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            background-color: #27374D;
+            color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .logo i {
+            margin-right: 8px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 520;
+            font-size: 0.9rem;
+        }
+        
+        .signup-btn {
+            background-color: white;
+            color: #526D82;
+            padding: 0.5rem 1.2rem;
+            border-radius: 9999px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .signup-btn:hover {
+            background-color: white;
+        }
+        
+        .page-header {
+            text-align: center;
+            padding: 4rem 1rem;
+            background: #526D82;
+            color: #27374D;
+            position: relative;
+            border-radius: 0 0 25px 25px;
+            margin-bottom: 2rem;
+        }
+        
+        .header-content {
+            background-color: #DDE6ED;
+            border-radius: 20px;
+            padding: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .page-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .page-description {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .rentals-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .filters {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            background-color: #526D82;
+            padding: 1rem;
+            border-radius: 10px;
+        }
+        
+        .filter-group {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        select, input {
+            padding: 0.5rem;
+            border-radius: 5px;
+            border: none;
+        }
+        
+        .search-box {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            border-radius: 5px;
+            padding: 0 0.5rem;
+        }
+        
+        .search-box input {
+            border: none;
+            outline: none;
+            padding: 0.5rem;
+        }
+        
+        .search-box i {
+            color: #526D82;
+        }
+        
+        .rental-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .rental-card {
+            background-color: #DDE6ED;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .rental-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        
+        .card-image {
+            height: 100px;
+            background-color: #DDE6ED;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #526D82;
+            font-size: 3rem;
+        }
+        
+        .card-content {
+            padding: 1rem;
+        }
+        
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #27374D;
+            margin-bottom: 0.5rem;
+        }
+        
+        .card-details {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        
+        .price {
+            font-weight: bold;
+            color: #27374D;
+        }
+        
+        .time-period {
+            color: #526D82;
+        }
+        
+        .card-location {
+            display: flex;
+            align-items: center;
+            color: #526D82;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .card-location i {
+            margin-right: 0.5rem;
+        }
+        
+        .card-owner {
+            display: flex;
+            align-items: center;
+            color: #27374D;
+            font-size: 0.9rem;
+        }
+        
+        .owner-avatar {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background-color: #526D82;
+            margin-right: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.7rem;
+        }
+        
+        .rent-btn {
+            display: block;
+            background-color: #27374D;
+            color: white;
+            text-align: center;
+            padding: 0.7rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            margin-top: 1rem;
+        }
+        
+        .rent-btn:hover {
+            background-color: #27374D;
+        }
+        
+        .post-rental {
+            display: block;
+            background-color: #27374D;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 2rem auto;
+            max-width: 300px;
+            transition: background-color 0.3s;
+        }
+        
+        .post-rental:hover {
+            background-color: #F57C00;
+        }
+        
+        .post-rental i {
+            margin-right: 0.5rem;
+        }
+        
+        footer {
+            background-color: #27374D;
+            color: white;
+            text-align: center;
+            padding: 0.5rem 1rem;
+            margin-top: 1rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.4rem;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-link {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-link:hover {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <i class="fas fa-shopping-cart"></i>
+            CampusSwap
+        </a>
+        <div class="nav-links">
+            <a href="login.html" class="nav-link">LOGIN</a>
+            <a href="register.html" class="signup-btn">SIGN UP</a>
+        </div>
+    </nav>
+    
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="header-content">
+            <h1 class="page-title">Rent Items</h1>
+            <p class="page-description">Need something temporarily? Browse available rentals from fellow students</p>
+        </div>
+    </section>
+    
+    <!-- Rentals Section -->
+    <section class="rentals-container">
+        <!-- Filters -->
+        <div class="filters">
+            <div class="filter-group">
+                <select name="category">
+                    <option value="">All Categories</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="books">Textbooks</option>
+                    <option value="furniture">Furniture</option>
+                    <option value="tools">Tools</option>
+                    <option value="sports">Sports Equipment</option>
+                </select>
+                <select name="duration">
+                    <option value="">Any Duration</option>
+                    <option value="day">Daily</option>
+                    <option value="week">Weekly</option>
+                    <option value="month">Monthly</option>
+                    <option value="semester">Semester</option>
+                </select>
+            </div>
+            <div class="search-box">
+                <input type="text" placeholder="Search rentals...">
+                <i class="fas fa-search"></i>
+            </div>
+        </div>
+        
+        <!-- Rental Grid -->
+        <div class="rental-grid">
+            <!-- Rental Item 1 -->
+            <div class="rental-card">
+                <div class="listing-image">
+                    <img src="/images/mac.jpeg" >
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">MacBook Pro 2023</h3>
+                    <div class="card-details">
+                        <span class="price">$30</span>
+                        <span class="time-period">per day</span>
+                    </div>
+                    <div class="card-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Engineering Building</span>
+                    </div>
+                    <div class="card-owner">
+                        <div class="owner-avatar">JD</div>
+                        <span>John Doe</span>
+                    </div>
+                    <a href="#" class="rent-btn">Request to Rent</a>
+                </div>
+            </div>
+            
+            <!-- Rental Item 2 -->
+            <div class="rental-card">
+                <div class="listing-image">
+                    <img src="/images/bik.jpeg" >
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Calculus Textbook</h3>
+                    <div class="card-details">
+                        <span class="price">$15</span>
+                        <span class="time-period">per week</span>
+                    </div>
+                    <div class="card-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Main Library</span>
+                    </div>
+                    <div class="card-owner">
+                        <div class="owner-avatar">AS</div>
+                        <span>Amy Smith</span>
+                    </div>
+                    <a href="#" class="rent-btn">Request to Rent</a>
+                </div>
+            </div>
+            
+            <!-- Rental Item 3 -->
+            <div class="rental-card">
+                <div class="listing-image">
+                    <img src="/images/bikee.jpeg" >
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Mountain Bike</h3>
+                    <div class="card-details">
+                        <span class="price">$20</span>
+                        <span class="time-period">per day</span>
+                    </div>
+                    <div class="card-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Student Union</span>
+                    </div>
+                    <div class="card-owner">
+                        <div class="owner-avatar">MJ</div>
+                        <span>Mike Johnson</span>
+                    </div>
+                    <a href="#" class="rent-btn">Request to Rent</a>
+                </div>
+            </div>
+            
+            <!-- Rental Item 4 -->
+            <div class="rental-card">
+                <div class="listing-image">
+                    <img src="/images/dslr.jpeg" >
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">DSLR Camera</h3>
+                    <div class="card-details">
+                        <span class="price">$25</span>
+                        <span class="time-period">per day</span>
+                    </div>
+                    <div class="card-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Art Building</span>
+                    </div>
+                    <div class="card-owner">
+                        <div class="owner-avatar">LT</div>
+                        <span>Lisa Taylor</span>
+                    </div>
+                    <a href="#" class="rent-btn">Request to Rent</a>
+                </div>
+            </div>
+            
+            <!-- Rental Item 5 -->
+            <div class="rental-card">
+                <div class="listing-image">
+                    <img src="/images/tool.jpeg" >
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Tool Kit</h3>
+                    <div class="card-details">
+                        <span class="price">$10</span>
+                        <span class="time-period">per day</span>
+                    </div>
+                    <div class="card-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>West Dorms</span>
+                    </div>
+                    <div class="card-owner">
+                        <div class="owner-avatar">RB</div>
+                        <span>Ryan Brown</span>
+                    </div>
+                    <a href="#" class="rent-btn">Request to Rent</a>
+                </div>
+            </div>
+            
+            <!-- Rental Item 6 -->
+            <div class="rental-card">
+                <div class="listing-image">
+                    <img src="/images/noise.jpeg" >
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Noise Cancelling Headphones</h3>
+                    <div class="card-details">
+                        <span class="price">$12</span>
+                        <span class="time-period">per day</span>
+                    </div>
+                    <div class="card-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Science Building</span>
+                    </div>
+                    <div class="card-owner">
+                        <div class="owner-avatar">EP</div>
+                        <span>Emily Parker</span>
+                    </div>
+                    <a href="#" class="rent-btn">Request to Rent</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Post Rental Button -->
+        <a href="#" class="post-rental">
+            <i class="fas fa-plus"></i>
+            Post Item for Rent
+        </a>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="about.html" class="footer-link">About Us</a>
+            <a href="terms.html" class="footer-link">Terms of Service</a>
+            <a href="privacy.html" class="footer-link">Privacy Policy</a>
+            <a href="contact.html" class="footer-link">Contact</a>
+        </div>
+        <p>&copy; 2025 CampusSwap. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Campus Swap Rent page loaded successfully!');
+            
+            // Example of filter functionality (just for demonstration)
+            document.querySelector('select[name="category"]').addEventListener('change', function() {
+                console.log('Category filter changed:', this.value);
+                // Here you would implement actual filtering
+            });
+        });
+    </script>
+</body>
+</html>

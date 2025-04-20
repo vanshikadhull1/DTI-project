@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Browse Items</title>
+</head>
+<body>
+  <h1>Browse Items</h1>
+  <ul id="item-list"></ul> <!-- This is where items will be listed -->
+
+  <script>
+    // Fetch API or Axios code here
+
+    fetch('http://localhost:5000/api/items')  // Replace with your backend URL
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();  // Parse JSON response
+      })
+      .then(data => {
+        const itemList = document.getElementById('item-list');
+        data.forEach(item => {
+          const listItem = document.createElement('li');
+          listItem.textContent = `${item.name} - $${item.price}`;
+          itemList.appendChild(listItem);
+        });
+      })
+      .catch(error => {
+        console.error('There was an error with the fetch operation:', error);
+      });
+  </script>
+</body>
+</html>

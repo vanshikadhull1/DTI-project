@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | CampusSwap</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f4f8;
+            color: #27374D;
+        }
+
+        .navbar {
+            background-color: #27374D;
+            padding: 1.2rem 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            text-decoration: none;
+            color: white;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: #64CCC5;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link, .signup-btn {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .signup-btn {
+            background-color: #64CCC5;
+            color: #27374D;
+            padding: 0.6rem 1.2rem;
+            border-radius: 9999px;
+        }
+
+        .signup-btn:hover, .nav-link:hover {
+            opacity: 0.8;
+        }
+
+        .about-section {
+            padding: 4rem 10%;
+            background-color: white;
+            min-height: 80vh;
+        }
+
+        .about-title {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: #27374D;
+        }
+
+        .about-subtitle {
+            font-size: 1.2rem;
+            color: #526D82;
+            margin-bottom: 2rem;
+            max-width: 800px;
+        }
+
+        .about-content {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #334155;
+            max-width: 900px;
+        }
+
+        footer {
+            background-color: #27374D;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .footer-links, .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .footer-link, .social-icon {
+            color: #DDE6ED;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-link:hover, .social-icon:hover {
+            color: #64CCC5;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo i {
+            color: #64CCC5;
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <i class="fas fa-exchange-alt"></i>
+            CampusSwap
+        </a>
+        <div class="nav-links">
+            <a href="login.html" class="nav-link">LOGIN</a>
+            <a href="register.html" class="signup-btn">SIGN UP</a>
+        </div>
+    </nav>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <h1 class="about-title">About CampusSwap</h1>
+        <p class="about-subtitle">Creating a sustainable and connected student community through smarter sharing.</p>
+        <div class="about-content">
+            <p>
+                CampusSwap is a student-first platform built to make campus life more efficient, affordable, and eco-friendly. Whether you need to sell your old textbooks, rent a bicycle, or swap gadgets with a classmate — CampusSwap makes it possible with ease and trust.
+            </p>
+            <br>
+            <p>
+                We believe in promoting a culture of collaboration and sustainability. By enabling students to share, buy, rent, and exchange everyday items, we aim to reduce waste, support financial savings, and build a stronger sense of community on campus.
+            </p>
+            <br>
+            <p>
+                Our vision is to create a future where no useful item sits unused and every student has access to what they need, when they need it.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">
+            <i class="fas fa-exchange-alt"></i> CampusSwap
+        </div>
+        <div class="footer-links">
+            <a href="about.html" class="footer-link">About Us</a>
+            <a href="contact.html" class="footer-link">Contact</a>
+            <a href="privacy.html" class="footer-link">Privacy Policy</a>
+            <a href="terms.html" class="footer-link">Terms</a>
+        </div>
+        <div class="footer-social">
+            <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+        </div>
+        <p style="margin-top: 1rem;">&copy; 2025 CampusSwap. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

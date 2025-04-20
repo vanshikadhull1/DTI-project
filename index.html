@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusSwap</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+        }
+        
+        body {
+            background-color: #f0f4f8;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 7%;
+            background-color: #27374D;
+            color: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight:100;
+            color: white;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .logo i {
+            margin-right: 12px;
+            color: #64CCC5;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: white;
+            transition: width 0.3s;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .signup-btn {
+            background-color: #64CCC5;
+            color: #27374D;
+            padding: 0.7rem 1.5rem;
+            border-radius: 9999px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .signup-btn:hover {
+            background-color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        
+        .hero-section {
+            position: relative;
+            height: 110vh;
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #526D82;
+            background-image: linear-gradient(rgba(39, 55, 77, 0.7), rgba(39, 55, 77, 0.7)), url("/images/Web_Photo_Editor.jpg");
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.9);
+            z-index: -1;
+        }
+        
+        .hero-content {
+            text-align: center;
+            color: white;
+            max-width: 800px;
+            padding: 0 20px;
+            animation: fadeIn 1.5s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .hero-title {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+        
+        .browse-btn {
+            background-color: #64CCC5;
+            color: #27374D;
+            padding: 1rem 2.5rem;
+            border-radius: 9999px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.3s;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+        
+        .browse-btn i {
+            margin-right: 12px;
+        }
+        
+        .browse-btn:hover {
+            background-color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.25);
+        }
+        
+        .options-section {
+            background-color: white;
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #27374D;
+            margin-bottom: 1.5rem;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #526D82;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            padding: 0 20px;
+        }
+        
+        .options-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .option-card {
+            background-color: #f8f9fa;
+            border-radius: 16px;
+            padding: 2rem;
+            width: 250px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.4s;
+            text-decoration: none;
+            text-align: center;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .option-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+            background-color: white;
+        }
+        
+        .option-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            border-radius: 50%;
+            background-color: #f0f4f8;
+            transition: all 0.3s;
+        }
+        
+        .option-card:hover .option-icon {
+            transform: scale(1.1);
+        }
+        
+        .buy-icon { color: #2176FF; }
+        .sell-icon { color: #4CAF50; }
+        .rent-icon { color: #FF9800; }
+        .exchange-icon { color: #9C27B0; }
+        
+        .option-card:hover .option-icon.buy-icon { background-color: rgba(33, 118, 255, 0.1); }
+        .option-card:hover .option-icon.sell-icon { background-color: rgba(76, 175, 80, 0.1); }
+        .option-card:hover .option-icon.rent-icon { background-color: rgba(255, 152, 0, 0.1); }
+        .option-card:hover .option-icon.exchange-icon { background-color: rgba(156, 39, 176, 0.1); }
+        
+        .option-title {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: #27374D;
+            margin-bottom: 1rem;
+        }
+        
+        .option-desc {
+            color: #526D82;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        
+        footer {
+            background-color: #27374D;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: auto;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+        
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-logo i {
+            color: #64CCC5;
+            margin-right: 10px;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .footer-link {
+            color: #DDE6ED;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-link:hover {
+            color: #64CCC5;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-icon {
+            color: white;
+            font-size: 1.3rem;
+            transition: color 0.3s;
+        }
+        
+        .social-icon:hover {
+            color: #64CCC5;
+        }
+        
+        .footer-bottom {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            width: 100%;
+            color: #9DB2BF;
+        }
+
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 3.5rem;
+            }
+            
+            .option-card {
+                width: 220px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem 5%;
+            }
+            
+            .nav-links {
+                gap: 1.5rem;
+            }
+            
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .option-card {
+                width: 45%;
+                min-width: 200px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-logo {
+                justify-content: center;
+            }
+            
+            .footer-links, .footer-social {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+            }
+            
+            .nav-link {
+                font-size: 0.9rem;
+            }
+            
+            .signup-btn {
+                padding: 0.5rem 1.2rem;
+            }
+            
+            .hero-section {
+                height: 70vh;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .browse-btn {
+                padding: 0.8rem 2rem;
+                font-size: 1.1rem;
+            }
+            
+            .options-container {
+                gap: 1.5rem;
+            }
+            
+            .option-card {
+                width: 100%;
+                max-width: 280px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <i class="fas fa-exchange-alt"></i>
+            CampusSwap
+        </a>
+        <div class="nav-links">
+            <a href="login.html" class="nav-link">LOGIN</a>
+            <a href="register.html" class="signup-btn">SIGN UP</a>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Campus Swap</h1>
+            <p class="hero-subtitle">Buy, sell, rent, and exchange items within your campus community. Save money and reduce waste!</p>
+            <a href="browse.html" class="browse-btn">
+                <i class="fas fa-shopping-cart"></i>
+                BROWSE LISTINGS
+            </a>
+        </div>
+    </section>
+    
+    <!-- Options Section -->
+    <section class="options-section">
+        <h2 class="section-title">How It Works</h2>
+        <p class="section-subtitle">CampusSwap offers multiple ways to get what you need and share what you don't - all within your campus community.</p>
+        
+        <div class="options-container">
+            <a href="buy.html" class="option-card">
+                <div class="option-icon buy-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <h3 class="option-title">Buy</h3>
+                <p class="option-desc">Find affordable items from fellow students. Textbooks, furniture, electronics and more!</p>
+            </a>
+            
+            <a href="sell.html" class="option-card">
+                <div class="option-icon sell-icon">
+                    <i class="fas fa-dollar-sign"></i>
+                </div>
+                <h3 class="option-title">Sell</h3>
+                <p class="option-desc">Turn unused items into cash. Quick listings and safe campus transactions.</p>
+            </a>
+            
+            <a href="rent.html" class="option-card">
+                <div class="option-icon rent-icon">
+                    <i class="fas fa-box"></i>
+                </div>
+                <h3 class="option-title">Rent</h3>
+                <p class="option-desc">Temporarily use high-value items without the full cost of buying them outright.</p>
+            </a>
+            
+            <a href="exchange.html" class="option-card">
+                <div class="option-icon exchange-icon">
+                    <i class="fas fa-exchange-alt"></i>
+                </div>
+                <h3 class="option-title">Exchange</h3>
+                <p class="option-desc">Trade items without cash. Swap books, clothes, and more with your campus community.</p>
+            </a>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <i class="fas fa-exchange-alt"></i>
+                CampusSwap
+            </div>
+            
+            <div class="footer-links">
+                <a href="about.html" class="footer-link">About Us</a>
+                <a href="contact.html" class="footer-link">Contact</a>
+                <a href="privacy.html" class="footer-link">Privacy Policy</a>
+                <a href="terms.html" class="footer-link">Terms of Use</a>
+            </div>
+            
+            <div class="footer-social">
+                <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 CampusSwap. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Campus Swap website loaded successfully!');
+        });
+    </script>
+</body>
+</html>

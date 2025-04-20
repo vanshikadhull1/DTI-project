@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusSwap - Register</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cambria', sans-serif;
+        }
+        
+        body {
+            background-color: #DDE6ED;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            background-color: #27374D;
+            color: #331D2C;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .logo i {
+            margin-right: 8px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 520;
+            font-size: 0.9rem;
+        }
+        
+        .signup-btn {
+            background-color: #DDE6ED;
+            color: #27374D;
+            padding: 0.5rem 1.2rem;
+            border-radius: 9999px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .signup-btn:hover {
+            background-color: #DDE6ED;
+        }
+        .register-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+        
+        .register-card {
+            background-color: #9DB2BF;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            width: 100%;
+            max-width: 550px;
+            overflow: hidden;
+        }
+        
+        .register-header {
+            background-color: #27374D;
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .register-header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .register-header p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .register-form {
+            padding: 2rem;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group {
+            flex: 1;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-row .form-group {
+            margin-bottom: 0;
+        }
+        
+        .form-group label {
+            display: block;
+            color: #27374D;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .input-group {
+            position: relative;
+        }
+        
+        .input-group i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #526D82;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem 0.8rem 2.5rem;
+            border: none;
+            border-radius: 5px;
+            background-color: white;
+            font-size: 1rem;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px #526D82;
+        }
+        
+        .university-selection {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .university-selection select {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: none;
+            border-radius: 5px;
+            background-color: white;
+            font-size: 1rem;
+            color: #27374D;
+        }
+        
+        .terms {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            color: #27374D;
+        }
+        
+        .terms input {
+            margin-top: 0.2rem;
+        }
+        
+        .terms a {
+            color: #27374D;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        
+        .terms a:hover {
+            text-decoration: underline;
+        }
+        
+        .register-btn {
+            width: 100%;
+            background-color: #27374D;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 1rem;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .register-btn:hover {
+            background-color: #27374D;
+        }
+        
+        .social-register {
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        .social-register p {
+            color: #27374D;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        
+        .social-register p::before,
+        .social-register p::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 35%;
+            height: 1px;
+            background-color: #27374D;
+            opacity: 0.3;
+        }
+        
+        .social-register p::before {
+            left: 0;
+        }
+        
+        .social-register p::after {
+            right: 0;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #DDE6ED;
+            color: #27374D;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-3px);
+        }
+        
+        .login-link {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: #27374D;
+        }
+        
+        .login-link a {
+            color: #27374D;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+        
+        footer {
+            background-color: #27374D;
+            color: white;
+            text-align: center;
+            padding: 0.5rem 1rem;
+            margin-top: 1rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.4rem;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-link {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-link:hover {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <i class="fas fa-shopping-cart"></i>
+            CampusSwap
+        </a>
+        <div class="nav-links">
+            <a href="browse.html" class="nav-link">BROWSE</a>
+            <a href="login.html" class="nav-link">LOGIN</a>
+            <a href="register.html" class="signup-btn">SIGN UP</a>
+        </div>
+    </nav>
+    
+    <!-- Register Container -->
+    <div class="register-container">
+        <div class="register-card">
+            <div class="register-header">
+                <h1>Create Account</h1>
+                <p>Join the campus sharing community today</p>
+            </div>
+            <div class="register-form">
+                <form action="#" method="post" id="registerForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <div class="input-group">
+                                <i class="fas fa-user"></i>
+                                <input type="text" id="firstName" class="form-control" placeholder="John" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <div class="input-group">
+                                <i class="fas fa-user"></i>
+                                <input type="text" id="lastName" class="form-control" placeholder="Doe" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">University Email</label>
+                        <div class="input-group">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="email" class="form-control" placeholder="your.name@university.edu" required>
+                        </div>
+                    </div>
+                    
+                    <div class="university-selection">
+                        <select name="university" id="university" required>
+                            <option value="" disabled selected>Select Your University</option>
+                            <option value="university1">State University</option>
+                            <option value="university2">Tech Institute</option>
+                            <option value="university3">Liberal Arts College</option>
+                            <option value="university4">Community College</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Create Password</label>
+                        <div class="input-group">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="password" class="form-control" placeholder="At least 8 characters" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <div class="input-group">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm your password" required>
+                        </div>
+                    </div>
+                    
+                    <div class="terms">
+                        <input type="checkbox" id="terms" required>
+                        <label for="terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+                    </div>
+                    
+                    <button type="submit" class="register-btn">CREATE ACCOUNT</button>
+                </form>
+                
+                <div class="social-register">
+                    <p>Or sign up with</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-google"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-apple"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="login-link">
+                    <p>Already have an account? <a href="login.html">Log in</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 CampusSwap. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Campus Swap Registration page loaded successfully!');
+            
+            // Form validation and submission
+            document.getElementById('registerForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Basic validation
+                const password = document.getElementById('password').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+                
+                if (password !== confirmPassword) {
+                    alert('Passwords do not match!');
+                    return;
+                }
+                
+                if (password.length < 8) {
+                    alert('Password must be at least 8 characters long!');
+                    return;
+                }
+                
+                const email = document.getElementById('email').value;
+                const university = document.getElementById('university').value;
+                
+                // Check for university email
+                if (!email.endsWith('.edu') && !email.includes('university')) {
+                    alert('Please use a valid university email address.');
+                    return;
+                }
+                
+                // Gather form data
+                const formData = {
+                    firstName: document.getElementById('firstName').value,
+                    lastName: document.getElementById('lastName').value,
+                    email: email,
+                    university: university,
+                    password: password
+                };
+                
+                console.log('Registration attempt:', formData);
+                // Here you would normally send this data to your server
+                
+                // For demo purposes, simulate successful registration
+                alert('Registration successful! Welcome to CampusSwap!');
+                // Redirect would happen here in a real application
+                // window.location.href = 'dashboard.html';
+            });
+        });
+    </script>
+</body>
+</html>
