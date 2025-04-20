@@ -1,916 +1,447 @@
-# DTI-project
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Campus Swap</title>
+    <title>CampusSwap</title>
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
+        * {
             margin: 0;
             padding: 0;
-            background-color: #f7f7f7;
-            color: #333;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
         }
-        .container {
-            width: 80%;
-            margin: auto;
-        }
-        .header {
-            background: #6a0572;
-            color: white;
-            text-align: center;
-            padding: 1.5em 0;
-            font-size: 24px;
-            font-weight: bold;
-        }
-        .nav {
-            display: flex;
-            justify-content: space-evenly;
-            color :white;
-            background: #9b72aa;
-            padding: 1em;
-            border-radius: 0 0 10px 10px;
-        }
-        .nav a {
-            color: white;
-            font-size: large;
-            text-decoration: none;
-            font-weight: bold;
-            padding: 0.5em 1.5em;
-            transition: 0.3s ease;
-        }
-        .nav a:hover {
-            background: white;
-            color: #6a0572;
-            border-radius: 5px;
-        }
-        .section {
-            background: white;
-            padding: 2em;
-            margin: 1em 0;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-        .search-bar {
-            text-align: center;
-            margin: 1em 0;
-        }
-        .search-bar input {
-            width: 80%;
-            padding: 12px;
-            font-size: 16px;
-            border-radius: 8px;
-            border: 1px solid #ddd;
-            outline: none;
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1em;
-        }
-        .item-card {
-            background: #ffe4e1;
-            padding: 1.5em;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            transition: 0.3s;
-            font-weight: bold;
-            color: #6a0572;
-        }
-        .item-card img {
-            width: 95%;
-            height: 400px;
-            object-fit: cover;
-            border-radius: 10px;
-        }
-        .item-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        }
-        .form-group {
-            margin: 1em 0;
-        }
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            font-size: 16px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            outline: none;
-        }
-        .btn {
-            background: #6a0572;
-            color: white;
-            padding: 12px 24px;
-            border: none;
-            cursor: pointer;
-            border-radius: 8px;
-            font-size: 16px;
-            transition: 0.3s ease;
-        }
-        .btn:hover {
-            background: #9b72aa;
-        }
-        .footer {
-            background: #6a0572;
-            color: white;
-            text-align: center;
-            padding: 1em 0;
-            margin-top: 2em;
-            border-radius: 10px 10px 0 0;
-        }
-    </style>
-</head>
-<body>
-    <header class="header">
-        <h1>Campus Swap</h1>
-    </header>
-    <nav class="nav">
-        <a href="index.html">Home</a>
-        <a href="buy.html">Buy</a>
-        <a href="sell.html">Sell</a>
-        <a href="exchange.html">Exchange</a>
-        <a href="rent.html">Rent</a>
-        <a href="messages.html">Messages</a>
-        <a href="profile.html">Profile</a>
-    </nav>
-    <div class="container">
-        <div class="search-bar">
-            <input type="text" placeholder="Search for items...">
-        </div>
-        <section class="section">
-            <h2>Featured Listings</h2>
-            <div class="grid">
-                <div class="item-card">
-                    <img src="laptop.jpg" alt="Laptop">
-                    <p>Laptop - Rs.25,000</p>
-                </div>
-                <div class="item-card">
-                    <img src="textbook.jpg" alt="Textbooks">
-                    <p>Textbooks - Rs.300</p>
-                </div>
-                <div class="item-card">
-                    <img src="bike.jpg" alt="Bike">
-                    <p>Bike - Rs.10,000</p>
-                </div>
-            </div>
-        </section>
-        <section class="section">
-            <h2>Post a New Listing</h2>
-            <form>
-                <div class="form-group">
-                    <input type="text" placeholder="Title" required>
-                </div>
-                <div class="form-group">
-                    <input type="text" placeholder="Category" required>
-                </div>
-                <div class="form-group">
-                    <input type="number" placeholder="Price" required>
-                </div>
-                <div class="form-group">
-                    <textarea placeholder="Description" required></textarea>
-                </div>
-                <button class="btn" type="submit">Post</button>
-            </form>
-        </section>
-    </div>
-    <footer class="footer">
-        <p>© 2025 Uni Connect | All Rights Reserved</p>
-    </footer>
-</body>
-</html>
-
-# profile code
-<section class="section">
-    <h2>User Profile</h2>
-    <div class="profile-container">
-        <img id="profile-pic" src="default-avatar.png" alt="Profile Picture">
-        <input type="file" id="upload-pic" accept="image/*">
-        <h3 id="user-name">Vanshika Dhull</h3>
-        <p id="user-email">vanshikadhull28112005@gmail.com</p>
-        <p id="user-bio">Student at Bennett University. Interested in Web Development.</p>
-        <button class="btn" onclick="editProfile()">Edit Profile</button>
-    </div>
-</section>
-
-<!-- Edit Profile Modal -->
-<div id="edit-modal" class="modal">
-    <div class="modal-content">
-        <h2>Edit Profile</h2>
-        <input type="text" id="edit-name" placeholder="Full Name">
-        <input type="email" id="edit-email" placeholder="Email">
-        <textarea id="edit-bio" placeholder="Bio"></textarea>
-        <button class="btn" onclick="saveProfile()">Save</button>
-    </div>
-</div>
-
-<script>
-    function editProfile() {
-        document.getElementById("edit-modal").style.display = "block";
-        document.getElementById("edit-name").value = document.getElementById("user-name").textContent;
-        document.getElementById("edit-email").value = document.getElementById("user-email").textContent;
-        document.getElementById("edit-bio").value = document.getElementById("user-bio").textContent;
-    }
-
-    function saveProfile() {
-        document.getElementById("user-name").textContent = document.getElementById("edit-name").value;
-        document.getElementById("user-email").textContent = document.getElementById("edit-email").value;
-        document.getElementById("user-bio").textContent = document.getElementById("edit-bio").value;
-        document.getElementById("edit-modal").style.display = "none";
-    }
-
-    document.getElementById("upload-pic").addEventListener("change", function(event) {
-        const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                document.getElementById("profile-pic").src = e.target.result;
-            };
-            reader.readAsDataURL(file);
-        }
-    });
-</script>
-<style>
-.profile-container {
-    background: #f4f4f4;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    max-width: 400px;
-    margin: 20px auto;
-    height: 400px;
-}
-
-#profile-pic {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid #805091;
-}
-
-#upload-pic {
-    margin-top: 10px;
-}
-
-h3, p {
-    margin: 10px 0;
-    color: #333;
-}
-
-.btn {
-    background: #805091;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background 0.3s ease;
-}
-
-.btn:hover {
-    background: #6a3b7d;
-}
-
-.modal {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: white;
-    padding: 20px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
-    text-align: center;
-    width: 300px;
-}
-
-.modal input, .modal textarea {
-    width: 100%;
-    padding: 8px;
-    margin: 8px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.modal textarea {
-    resize: none;
-    height: 80px;
-}
-
-.modal .btn {
-    width: 100%;
-}
-</style>
-
-# login code
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Campus Marketplace</title>
-    <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: white;
-            color: #ffffff;
+            background-color: #f0f4f8;
+            min-height: 100vh;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            height: 100vh;
-        }
-        .login-container {
-            background: #975fab;
-            padding: 2em;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-            width: 500px;
-            height: 500px;
-            text-align: center;
-        }
-        .login-container h2 {
-            margin-bottom: 1em;
-        }
-        input {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: none;
-            border-radius: 5px;
-        }
-        button {
-            width: 100%;
-            padding: 10px;
-            background: #9b72aa;
-            border: none;
+            padding: 1.2rem 7%;
+            background-color: #27374D;
             color: white;
-            font-size: 16px;
-            border-radius: 5px;
-            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
-        button:hover {
-            background: #6a0572;
-        }
-        .register-link {
-            margin-top: 10px;
-            display: block;
-            color: white;
-            text-decoration: none;
-        }
-        .register-link:hover {
-            text-decoration: underline;
-        }
-    </style>
-</head>
-<body>
-    <div class="login-container">
-        <h1>Login</h1>
-        <form>
-            <input type="text" placeholder="Username" required>
-            <input type="password" placeholder="Password" required>
-            <button type="submit">Login</button>
-        </form>
-        <a href="register.html" class="register-link">Don't have an account? Register</a>
-    </div>
-</body>
-</html>
-#register code
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register - Campus Marketplace</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #ececec;
+        .logo {
             display: flex;
-            justify-content: center;
             align-items: center;
-            height: 100vh;
-        }
-        .container {
-            background: white;
-            padding: 2em;
-            border-radius: 8px;
-            box-shadow: 0 0 10px #9b72aa;
-            width: 350px;
-            text-align: center;
-        }
-        h2 {
-            margin-bottom: 1em;
-        }
-        input {
-            width: 100%;
-            padding: 10px;
-            margin: 8px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        button {
-            background: #6a0572;
+            font-size: 1.8rem;
+            font-weight:100;
             color: white;
-            border: none;
-            padding: 10px;
-            width: 100%;
-            cursor: pointer;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-        button:hover {
-            background: #6a0572;
-        }
-        p {
-            margin-top: 10px;
-        }
-        a {
-            color: #6a0572;
             text-decoration: none;
-            font-weight: bold;
+            transition: transform 0.3s;
         }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h2>Create an Account</h2>
-        <form action="register_process.php" method="POST">
-            <input type="text" name="fullname" placeholder="Full Name" required>
-            <input type="email" name="email" placeholder="Email Address" required>
-            <input type="password" name="password" placeholder="Password" required>
-            <input type="password" name="confirm_password" placeholder="Confirm Password" required>
-            <button type="submit">Register</button>
-        </form>
-        <p>Already have an account? <a href="login.html" >Login here</a></p>
-    </div>
-</body>
-</html>
-# messages code
-<section class="section">
-    <h1>Messages</h1>
-
-    <!-- Message Display Box -->
-    <div class="message-box" id="message-box"></div>
-
-    <!-- Input Box -->
-    <div class="message-input">
-        <input type="text" id="message-input" placeholder ="Type a message..." onkeypress="handleEnter(event)">
-        <button class="btn" onclick="sendMessage()">Send</button>
-    </div>
-</section>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const messages = [
-            { sender: "User", text: "Hey, is the laptop still available?" },
-            { sender: "Seller", text: "Yes! It's in great condition." },
-            { sender: "User", text: "Awesome! Can we negotiate the price?" }
-        ];
-
-        function displayMessages() {
-            const messageBox = document.getElementById("message-box");
-            messageBox.innerHTML = "";
-            messages.forEach(msg => {
-                const div = document.createElement("div");
-                div.classList.add("message", msg.sender === "User" ? "user-message" : "seller-message");
-                div.innerText = msg.text;
-                messageBox.appendChild(div);
-            });
-            messageBox.scrollTop = messageBox.scrollHeight;
-        }
-
-        window.sendMessage = function () {
-            const input = document.getElementById("message-input");
-            const messageText = input.value.trim();
-            if (messageText) {
-                messages.push({ sender: "User", text: messageText });
-                displayMessages();
-                input.value = "";
-            }
-        };
-
-        window.handleEnter = function (event) {
-            if (event.key === "Enter") {
-                sendMessage();
-            }
-        };
-
-        displayMessages();
-    });
-</script>
-
-<style>
-    
-    .message-box {
-        height: 86%;
-        overflow-y: auto;
-        border: 1px solid black;
-        padding: 10px;
-        border-radius: 10px;
-        background: #9b72aa;
-    }
-    .message {
-        padding: 10px;
-        margin: 5px;
-        border-radius: 8px;
-        max-width: 70%;
-        font-size: 30px;
-    }
-    .user-message {
-        background: #805091;
-        color: white;
-        align-self: flex-end;
-        text-align: right;
-        margin-left: auto;
-        height: 60px;
-    }
-    .seller-message {
-        background: #e0e0e0;
-        align-self: flex-start;
-        height: 60px;
-    }
-    .message-input {
-        display: flex;
-        margin-top: 10px;
-        height: 60px;
-        color: white;
-    }
-    .message-input input {
-        flex-grow: 1;
-        padding: 10px;
-        border-radius: 5px;
-        border: 1px solid #ccc;
-        font-size: 16px;
-        background-color: #9b72aa;
-    }
-    .btn{
-        width: 100px;
-    }
-    .message-input input::placeholder {
-    color: white;
-    opacity: 1; /* Ensure full opacity */
-    }
-</style>
-#rent code
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Campus Swap</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f8f9fa;
-            font-size: 50px;
-        }
-        .section {
-            background: white;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        h2 {
-            text-align: center;
-            color: #333;
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            padding: 10px;
-        }
-        .item-card {
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-            font-weight: bold;
-            color: #555;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-            transition: 0.3s ease;
-            height: 60px;
-        }
-        .item-card:hover {
+        .logo:hover {
             transform: scale(1.05);
-            background: #f0f0f0;
         }
-        .form-group {
-            margin-bottom: 15px;
+        .logo i {
+            margin-right: 12px;
+            color: #64CCC5;
         }
-        input, textarea, button {
-            width: 100%;
-            height: 100px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 24px;
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
         }
-        textarea {
-            resize: none;
-            height: 120px;
-        }
-        .btn {
-            background: #6a0572;
+        .nav-link {
             color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: white;
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .signup-btn {
+            background-color: #64CCC5;
+            color: #27374D;
+            padding: 0.7rem 1.5rem;
+            border-radius: 9999px;
             font-weight: bold;
-            border: none;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .signup-btn:hover {
+            background-color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        .hero-section {
+            position: relative;
+            height: 110vh;
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #526D82;
+            background-image: linear-gradient(rgba(39, 55, 77, 0.7), rgba(39, 55, 77, 0.7)), url("/images/Web_Photo_Editor.jpg");
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.9);
+            z-index: -1;
+        }
+        .hero-content {
+            text-align: center;
+            color: white;
+            max-width: 800px;
+            padding: 0 20px;
+            animation: fadeIn 1.5s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .hero-title {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .hero-subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+        .browse-btn {
+            background-color: #64CCC5;
+            color: #27374D;
+            padding: 1rem 2.5rem;
+            border-radius: 9999px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.3s;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+        .browse-btn i {
+            margin-right: 12px;
+        }
+        .browse-btn:hover {
+            background-color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.25);
+        }
+        .options-section {
+            background-color: white;
+            padding: 5rem 0;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #27374D;
+            margin-bottom: 1.5rem;
+        }
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #526D82;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            padding: 0 20px;
+        }
+        .options-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .option-card {
+            background-color: #f8f9fa;
+            border-radius: 16px;
+            padding: 2rem;
+            width: 250px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             cursor: pointer;
-            transition: 0.3s ease;
+            transition: all 0.4s;
+            text-decoration: none;
+            text-align: center;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            border: 1px solid rgba(0,0,0,0.05);
         }
-        .btn:hover {
-            background: #6a0572;
+        .option-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+            background-color: white;
         }
-    </style>
+        .option-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            border-radius: 50%;
+            background-color: #f0f4f8;
+            transition: all 0.3s;
+        }
+        .option-card:hover .option-icon {
+            transform: scale(1.1);
+        }
+        .buy-icon { color: #2176FF; }
+        .sell-icon { color: #4CAF50; }
+        .rent-icon { color: #FF9800; }
+        .exchange-icon { color: #9C27B0; }
+        .option-card:hover .option-icon.buy-icon { background-color: rgba(33, 118, 255, 0.1); }
+        .option-card:hover .option-icon.sell-icon { background-color: rgba(76, 175, 80, 0.1); }
+        .option-card:hover .option-icon.rent-icon { background-color: rgba(255, 152, 0, 0.1); }
+        .option-card:hover .option-icon.exchange-icon { background-color: rgba(156, 39, 176, 0.1); }
+        .option-title {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: #27374D;
+            margin-bottom: 1rem;
+        }
+        .option-desc {
+            color: #526D82;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        footer {
+            background-color: #27374D;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: auto;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        .footer-logo i {
+            color: #64CCC5;
+            margin-right: 10px;
+        }
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        .footer-link {
+            color: #DDE6ED;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-link:hover {
+            color: #64CCC5;
+        }
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+        .social-icon {
+            color: white;
+            font-size: 1.3rem;
+            transition: color 0.3s;
+        }
+        .social-icon:hover {
+            color: #64CCC5;
+        }
+        .footer-bottom {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            width: 100%;
+            color: #9DB2BF;
+        }
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 3.5rem;
+            }
+            .option-card {
+                width: 220px;
+            }
+        }
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem 5%;
+            }
+            .nav-links {
+                gap: 1.5rem;
+            }
+            .hero-title {
+                font-size: 3rem;
+            }
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            .option-card {
+                width: 45%;
+                min-width: 200px;
+            }
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .footer-logo {
+                justify-content: center;
+            }
+            .footer-links, .footer-social {
+                justify-content: center;
+            }
+        }
+        @media (max-width: 576px) {
+            .logo {
+                font-size: 1.5rem;
+            }
+            .nav-links {
+                gap: 1rem;
+            }
+            .nav-link {
+                font-size: 0.9rem;
+            }
+            .signup-btn {
+                padding: 0.5rem 1.2rem;
+            }
+            .hero-section {
+                height: 70vh;
+            }
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            .browse-btn {
+                padding: 0.8rem 2rem;
+                font-size: 1.1rem;
+            }
+            .options-container {
+                gap: 1.5rem;
+            }
+            .option-card {
+                width: 100%;
+                max-width: 280px;
+}
+}
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <section class="section">
-        <h2>Sell an Item</h2>
-        <form id="sell-form">
-            <div class="form-group">
-                <input type="text" id="sell-title" placeholder="Item Name" required>
-            </div>
-            <div class="form-group">
-                <input type="text" id="sell-category" placeholder="Category" required>
-            </div>
-            <div class="form-group">
-                <input type="number" id="sell-price" placeholder="Price ($)" required>
-            </div>
-            <div class="form-group">
-                <textarea id="sell-description" placeholder="Description" required></textarea>
-            </div>
-            <button class="btn" type="submit">Post for Sale</button>
-        </form>
-    </section>
-
-  <section class="section">
-        <h2>Available Rentals</h2>
-        <div class="grid" id="rental-list">
-            <div class="item-card">Projector - $10/day</div>
-            <div class="item-card">Camera - $15/day</div>
-            <div class="item-card">Study Room - $5/hour</div>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <i class="fas fa-exchange-alt"></i>
+            CampusSwap
+        </a>
+        <div class="nav-links">
+            <a href="login.html" class="nav-link">LOGIN</a>
+            <a href="register.html" class="signup-btn">SIGN UP</a>
+        </div>
+    </nav>
+    <section class="hero-section">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Campus Swap</h1>
+            <p class="hero-subtitle">Buy, sell, rent, and exchange items within your campus community. Save money and reduce waste!</p>
+            <a href="browse.html" class="browse-btn">
+                <i class="fas fa-shopping-cart"></i>
+                BROWSE LISTINGS
+            </a>
         </div>
     </section>
-
-  <section class="section">
-        <h2>Request a Rental</h2>
-        <form id="rent-form">
-            <div class="form-group">
-                <input type="text" id="item-name" placeholder="Item Name" required>
-            </div>
-            <div class="form-group">
-                <input type="number" id="rental-price" placeholder="Price per day ($)" required>
-            </div>
-            <div class="form-group">
-                <textarea id="rental-description" placeholder="Description" required></textarea>
-            </div>
-            <button class="btn" type="submit">Post Rental</button>
-        </form>
+    <section class="options-section">
+        <h2 class="section-title">How It Works</h2>
+        <p class="section-subtitle">CampusSwap offers multiple ways to get what you need and share what you don't - all within your campus community.</p>
+        <div class="options-container">
+            <a href="buy.html" class="option-card">
+                <div class="option-icon buy-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <h3 class="option-title">Buy</h3>
+                <p class="option-desc">Find affordable items from fellow students. Textbooks, furniture, electronics and more!</p>
+            </a>
+            <a href="sell.html" class="option-card">
+                <div class="option-icon sell-icon">
+                    <i class="fas fa-dollar-sign"></i>
+                </div>
+                <h3 class="option-title">Sell</h3>
+                <p class="option-desc">Turn unused items into cash. Quick listings and safe campus transactions.</p>
+            </a>
+            <a href="rent.html" class="option-card">
+                <div class="option-icon rent-icon">
+                    <i class="fas fa-box"></i>
+                </div>
+                <h3 class="option-title">Rent</h3>
+                <p class="option-desc">Temporarily use high-value items without the full cost of buying them outright.</p>
+            </a>
+            <a href="exchange.html" class="option-card">
+                <div class="option-icon exchange-icon">
+                    <i class="fas fa-exchange-alt"></i>
+                </div>
+                <h3 class="option-title">Exchange</h3>
+                <p class="option-desc">Trade items without cash. Swap books, clothes, and more with your campus community.</p>
+            </a>
+        </div>
     </section>
-
-  <script>
-        document.getElementById("sell-form").addEventListener("submit", function(event) {
-            event.preventDefault();
-            const title = document.getElementById("sell-title").value;
-            const price = document.getElementById("sell-price").value;
-            const category = document.getElementById("sell-category").value;
-            const description = document.getElementById("sell-description").value;
-
-            if (title && price && category && description) {
-                const itemList = document.getElementById("item-list");
-                const newItem = document.createElement("div");
-                newItem.classList.add("item-card");
-                newItem.textContent = `${title} - $${price}`;
-                itemList.appendChild(newItem);
-
-                document.getElementById("sell-form").reset();
-            }
-        });
-
-        document.getElementById("rent-form").addEventListener("submit", function(event) {
-            event.preventDefault();
-            const itemName = document.getElementById("item-name").value;
-            const rentalPrice = document.getElementById("rental-price").value;
-            const description = document.getElementById("rental-description").value;
-
-            if (itemName && rentalPrice && description) {
-                const rentalList = document.getElementById("rental-list");
-                const newItem = document.createElement("div");
-                newItem.classList.add("item-card");
-                newItem.textContent = `${itemName} - $${rentalPrice}/day`;
-                rentalList.appendChild(newItem);
-
-                document.getElementById("rent-form").reset();
-            }
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <i class="fas fa-exchange-alt"></i>
+                CampusSwap
+            </div>
+            <div class="footer-links">
+                <a href="about.html" class="footer-link">About Us</a>
+                <a href="contact.html" class="footer-link">Contact</a>
+                <a href="privacy.html" class="footer-link">Privacy Policy</a>
+                <a href="terms.html" class="footer-link">Terms of Use</a>
+            </div>
+            <div class="footer-social">
+                <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 CampusSwap. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Campus Swap website loaded successfully!');
         });
     </script>
 </body>
 </html>
-# Exchange code
-<section class="section">
-    <h1>Available Items for Exchange</h1>
-
-    <!-- Search and Filter -->
-    <div class="search-bar">
-        <input type="text" id="search-input" placeholder="Search for items..." onkeyup="filterItems()">
-        <select id="category-filter" onchange="filterItems()">
-            <option value="">All Categories</option>
-            <option value="Electronics">Electronics</option>
-            <option value="Books">Books</option>
-            <option value="Furniture">Furniture</option>
-        </select>
-    </div>
-
-    <!-- Items Grid -->
-    <div class="grid" id="items-list"></div>
-</section>
-
-<!-- Exchange Request Modal -->
-<div id="exchangeModal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <h2>Propose an Exchange</h2>
-        <p id="selectedItem"></p>
-        <input type="text" id="offerItem" placeholder="Enter the item you want to offer" required>
-        <button class="btn" onclick="submitExchange()">Submit Request</button>
-    </div>
-</div>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const items = [
-            { name: "Tablet", category: "Electronics" },
-            { name: "Programming Book", category: "Books" },
-            { name: "Office Chair", category: "Furniture" },
-            { name: "Smartwatch", category: "Electronics" },
-            { name: "Wooden Desk", category: "Furniture" }
-        ];
-
-        const itemsList = document.getElementById("items-list");
-
-        function displayItems(filteredItems) {
-            itemsList.innerHTML = "";
-            filteredItems.forEach(item => {
-                const div = document.createElement("div");
-                div.classList.add("item-card");
-                div.innerHTML = `
-                    <strong>${item.name}</strong> <br>
-                    <small>Category: ${item.category}</small> <br>
-                    <button class="btn" onclick="openExchangeModal('${item.name}')">Request Exchange</button>
-                `;
-                itemsList.appendChild(div);
-            });
-        }
-
-        function filterItems() {
-            const searchQuery = document.getElementById("search-input").value.toLowerCase();
-            const selectedCategory = document.getElementById("category-filter").value;
-
-            const filteredItems = items.filter(item => 
-                item.name.toLowerCase().includes(searchQuery) &&
-                (selectedCategory === "" || item.category === selectedCategory)
-            );
-
-            displayItems(filteredItems);
-        }
-
-        window.openExchangeModal = function(itemName) {
-            document.getElementById("exchangeModal").style.display = "block";
-            document.getElementById("selectedItem").innerText = `Propose an exchange for: ${itemName}`;
-        };
-
-        window.closeModal = function() {
-            document.getElementById("exchangeModal").style.display = "none";
-        };
-
-        window.submitExchange = function() {
-            const offerItem = document.getElementById("offerItem").value;
-            if (offerItem) {
-                alert(`Exchange request sent: You offered "${offerItem}"`);
-                closeModal();
-            } else {
-                alert("Please enter an item to offer.");
-            }
-        };
-
-        displayItems(items);
-    });
-</script>
-
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f8f9fa;
-        margin: 0;
-        padding: 20px;
-        text-align: center;
-    }
-
-    .section {
-        max-width: 100%;
-        height: 100%;
-        margin: auto;
-        background: white;
-        background-color: #9b72aa;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .search-bar {
-        text-align: center;
-        margin-bottom: 20px;
-    }
-
-    .search-bar input, .search-bar select {
-        padding: 12px;
-        font-size: 18px;
-        border-radius: 8px;
-        border: none;
-        margin-right: 10px;
-        width: 50%;
-    }
-
-    .grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 33px;
-        padding: 30px;
-        justify-content: center;
-        width: 90%;
-    }
-
-    .item-card {
-        background: #fff;
-        padding: 30px;
-        border-radius: 15px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        text-align: center;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        color: black;
-        width: 420px;
-        height: 300px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    .btn {
-        background: #6a0572;
-        color: white;
-        padding: 12px 20px;
-        border: none;
-        cursor: pointer;
-        border-radius: 8px;
-        font-size: 16px;
-        margin-top: 10px;
-    }
-
-    .btn:hover {
-        background: #9b72aa;
-    }
-
-    .modal {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        justify-content: center;
-        align-items: center;
-    }
-
-    .modal-content {
-        background: white;
-        padding: 20px;
-        width: 300px;
-        border-radius: 10px;
-        text-align: center;
-        position: relative;
-    }
-
-    .close {
-        position: absolute;
-        right: 10px;
-        top: 10px;
-        font-size: 24px;
-        cursor: pointer;
-    }
-</style>
-
-
